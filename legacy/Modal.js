@@ -6,10 +6,6 @@
  * @param isOpen = boolean or false // set true if you want modal open on start
  * @param animationIn = string or null (format: "animationName Timing function")
  * @param animationOut = string or null (format: "animationName Timing function")*
- * @param count = Object or null {
- *                      host: "https://"
- *                      title: "title of the count"
- *                  }
  *
  * TODO: Animation script when modal close.
  */
@@ -22,7 +18,6 @@ class Modal {
         isOpen = false,
         animationIn = null,
         animationOut = null,
-        count = null
     ) {
         this.popup = popup;
         this.closeBtn = closeBtn;
@@ -30,10 +25,11 @@ class Modal {
         this.isOpen = isOpen;
         this.animationIn = animationIn;
         this.animationOut = animationOut;
-        this.count = count;
         this.uniqId = Math.random().toString(36).substr(2, 5);
         this.scrollY = 0;
-        this.init();
+        this.addBackground();
+        this.listeners();
+        this.setInitialState();
     }
 
     addBackground() {
@@ -55,10 +51,6 @@ class Modal {
             [...this.openBtns].forEach((btn) =>
                 btn.setAttribute('data-modalid', this.uniqId)
             );
-            //   if (this.openBtns.length) {
-            //   } else {
-            //     this.openBtns.setAttribute('data-modalid', this.uniqId);
-            //   }
         }
 
         div.insertAdjacentElement('afterbegin', this.popup);
@@ -169,25 +161,5 @@ class Modal {
         } else {
             return false;
         }
-    }
-
-    addCount() {
-        let data = new FormData();
-        data.append('title', this.count.title);
-
-        fetch(this.count.host, {
-                method: 'POST',
-                body: data,
-            })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-            });
-    }
-
-    init() {
-        this.addBackground();
-        this.listeners();
-        this.setInitialState();
     }
 }
