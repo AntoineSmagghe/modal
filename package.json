@@ -1,0 +1,24 @@
+{
+  "name": "svelte-modal",
+  "version": "0.0.0",
+  "description": "A TypeScript, Svelte modal for simple usages",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AntoineSmagghe/modal.git"
+  },
+  "author": "Antoine Smagghe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AntoineSmagghe/modal/issues"
+  },
+  "homepage": "https://github.com/AntoineSmagghe/modal#readme",
+  "devDependencies": {
+    "eslint": "^7.31.0",
+    "typescript": "^4.3.5",
+    "webpack": "^5.46.0"
+  }
+}
